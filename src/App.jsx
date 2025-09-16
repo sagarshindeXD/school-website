@@ -1,7 +1,89 @@
 import { useState, useEffect, useRef } from 'react';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import './App.css';
+import './styles/About.css';
+import About from './pages/About';
 
-function App() {
+const NavBar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "#academics", label: "Academics" },
+    { path: "#admissions", label: "Admissions" },
+    { path: "#gallery", label: "Gallery" },
+  ];
+
+  return (
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        <div className="navbar-brand">
+          <Link to="/" className="logo-wrapper">
+            <img 
+              src="/logos/gos.png" 
+              alt="Gurukul Olympiad School" 
+              className="logo-image"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = 'https://via.placeholder.com/60x60?text=GOS';
+              }}
+            />
+          </Link>
+        </div>
+
+        <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+          <div className="nav-links">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+                <span className="nav-underline"></span>
+              </Link>
+            ))}
+          </div>
+          
+          <div className="nav-actions">
+            <Link 
+              to="/login" 
+              className="btn btn-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Login
+            </Link>
+          </div>
+        </div>
+
+        <button 
+          className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
+      </div>
+    </nav>
+  );
+};
+
+const Home = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideInterval = useRef();
@@ -73,52 +155,24 @@ function App() {
 
   return (
     <div className="app">
-      {/* Navigation */}
-      <nav className={isScrolled ? 'nav scrolled' : 'nav'}>
-        <div className="nav-container">
-          <div className="nav-links">
-            <a href="#home" className="logo-link">
-              <img src="/logos/gos.png" alt="GOS Logo" className="nav-logo" />
-            </a>
-            <a href="#home" className="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#life-at-gos">Life at GOS</a>
-            
-            <div className="dropdown">
-              <button className="dropbtn">Campuses</button>
-              <div className="dropdown-content">
-                <a href="#airport-campus">Airport Campus</a>
-                <a href="#city-campus">City Campus</a>
-                <a href="#osmanpura-campus">Osmanpura Campus</a>
-              </div>
-            </div>
-            
-            <a href="#admissions">Admissions</a>
-            <a href="#mandatory-disclosure">Mandatory Public Disclosure</a>
-            
-            <div className="dropdown">
-              <button className="dropbtn">More</button>
-              <div className="dropdown-content">
-                <a href="#gos-social">GOS Social</a>
-                <a href="#accolades">Accolades</a>
-              </div>
-            </div>
-          </div>
-          <button className="cta-button">Apply Now</button>
-        </div>
-      </nav>
-
       {/* Hero Section */}
-      <header className="hero" id="home" style={{ backgroundImage: 'url(/logos/hero.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-        <div className="hero-content">
-          <h1>Level Up Your Future with Next-Gen Learning</h1>
-          <p>Join our vibrant learning community where education meets creativity and technology</p>
-          <div className="hero-buttons">
-            <button className="primary-button">Explore Programs</button>
-            <button className="secondary-button">Virtual Tour</button>
+      <section className="hero" id="home" style={{
+        backgroundImage: 'url(/logos/hero.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        padding: '8rem 0',
+        textAlign: 'center',
+        color: '#fff'
+      }}>
+        <div className="container">
+          <div className="hero-content">
+            <h1>Welcome to Gurukul Olympiad School</h1>
+            <p className="hero-subtitle">Nurturing young minds for a brighter tomorrow</p>
+            <Link to="/#admissions" className="btn btn-primary">Join Us Today</Link>
           </div>
         </div>
-      </header>
+      </section>
 
       {/* About Us Section */}
       <section className="about" id="about">
@@ -288,11 +342,11 @@ function App() {
             <div className="footer-section">
               <h3>Quick Links</h3>
               <ul className="footer-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#admissions">Admissions</a></li>
-                <li><a href="#mandatory-disclosure">Mandatory Public Disclosure</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About Us</Link></li>
+                <li><Link to="/#admissions">Admissions</Link></li>
+                <li><Link to="/#mandatory-disclosure">Mandatory Public Disclosure</Link></li>
+                <li><Link to="/#contact">Contact Us</Link></li>
               </ul>
               
               <div className="social-links mt-4">
@@ -327,6 +381,20 @@ function App() {
           </div>
         </div>
       </footer>
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <div className="app-container">
+      <NavBar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </main>
     </div>
   );
 }
