@@ -3,6 +3,7 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import './App.css';
 import './styles/About.css';
 import About from './pages/About';
+import LifeAtGos from './pages/LifeAtGos';
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,7 +22,7 @@ const NavBar = () => {
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
-    { path: "#academics", label: "Academics" },
+    { path: "/life-at-gos", label: "Life at GOS" },
     { path: "#admissions", label: "Admissions" },
     { path: "#gallery", label: "Gallery" },
   ];
@@ -174,142 +175,260 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About Us Section */}
-      <section className="about" id="about">
+      {/* Modern About Section */}
+      <section className="modern-about" id="about">
         <div className="container">
-          <div className="about-content">
-            <div className="about-text">
-              <h2>Welcome to GOS - Where Legends are Made</h2>
-              <p>Welcome to Gurukul Olympiad School, a harmonious collective of schools dedicated to delivering exceptional education to all. Here, the pursuit of academic brilliance goes hand in hand with the chase of audacious dreams. As a reputable educational institution, we believe in the complete development of our students, creating a balanced platform where rigorous academia converges with myriad opportunities for daring dreams and innovation.</p>
-              <p>Gurukul Olympiad School is more than a traditional school; we are a bustling epicenter of knowledge, creativity, and forward-thinking. Our unique approach to education cultivates an ambiance of curiosity and innovation, encouraging our students to morph into proactive, involved learners who excel not just academically but also in navigating real-world challenges.</p>
-              <div className="stats-grid">
-                <div className="stat-item">
-                  <span className="stat-number">15+</span>
-                  <span className="stat-label">Years of Excellence</span>
+          <div className="modern-about-grid">
+            <div className="modern-about-content">
+              <h2 className="modern-heading">Where <span className="highlight">Legends</span> Are Made</h2>
+              
+              <div className="modern-about-text">
+                <p className="lead">Welcome to Gurukul Olympiad School, where academic excellence meets holistic development in a nurturing environment that inspires greatness.</p>
+                
+                <div className="feature-list">
+                  <div className="feature-item">
+                    <div className="feature-icon">🏆</div>
+                    <div>
+                      <h4>Proven Excellence</h4>
+                      <p>15+ years of academic distinction and student success stories</p>
+                    </div>
+                  </div>
+                  
+                  <div className="feature-item">
+                    <div className="feature-icon">🌱</div>
+                    <div>
+                      <h4>Holistic Growth</h4>
+                      <p>Balancing academics, sports, arts, and character development</p>
+                    </div>
+                  </div>
+                  
+                  <div className="feature-item">
+                    <div className="feature-icon">🔬</div>
+                    <div>
+                      <h4>Future-Ready</h4>
+                      <p>Cutting-edge facilities and innovative teaching methodologies</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="stat-item">
-                  <span className="stat-number">95%</span>
-                  <span className="stat-label">Success Rate</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-number">50+</span>
-                  <span className="stat-label">Expert Educators</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-number">1000+</span>
-                  <span className="stat-label">Successful Alumni</span>
+                
+                <div className="cta-buttons">
+                  <Link to="/about" className="modern-button primary">Our Story</Link>
+                  <Link to="/#virtual-tour" className="modern-button outline">Virtual Tour</Link>
                 </div>
               </div>
             </div>
-            <div className="about-image">
-              <img src="/logos/about.png" alt="About Gurukul Olympiad School" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="features" id="why-us">
-        <div className="container">
-          <h2>Why GOS is Lit</h2>
-          <p className="section-subtitle">Discover what makes Gurukul Olympiad School the perfect choice for your child's future</p>
-          
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="card-icon">🎯</div>
-              <h3>Our Vibe</h3>
-              <p>Nurturing each child's unique potential through an integrated education approach that blends academic learning with competitive preparation and future career readiness.</p>
-            </div>
-
-            <div className="feature-card">
-              <div className="card-icon">📚</div>
-              <h3>How We Do It</h3>
-              <p>Pioneering the SWitCh model that integrates schooling with coaching, providing early preparation for national level entrances and competitive exams as per NCERT and CBSE standards.</p>
-            </div>
-
-            <div className="feature-card">
-              <div className="card-icon">👩‍🏫</div>
-              <h3>Brainiac Squad</h3>
-              <p>Expert educators from Kota's coaching excellence background, dedicated to nurturing each child's uniqueness through innovative teaching methodologies and personalized attention.</p>
-            </div>
-
-            <div className="feature-card">
-              <div className="card-icon">🌱</div>
-              <h3>More Than Just Books</h3>
-              <p>Comprehensive focus on EQ, IQ, reasoning, logical thinking, and analytical skills, preparing students for academic excellence and personal growth.</p>
-            </div>
-
-            <div className="feature-card">
-              <div className="card-icon">⚽</div>
-              <h3>Beyond the Books</h3>
-              <p>Diverse opportunities through clubs, societies, and our signature 'EduSports' program for a perfect balance of academics and physical development.</p>
-            </div>
-
-            <div className="feature-card">
-              <div className="card-icon">👨‍👩‍👧‍👦</div>
-              <h3>Squad Goals for Parents</h3>
-              <p>Active parent community with regular interactions, workshops, and support systems to foster positive parenting and student success.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Leaders' Messages Section */}
-      <section className="leaders" id="leaders">
-        <div className="container">
-          <h2>Straight from the Bosses</h2>
-          <p className="section-subtitle">Hear from the visionaries shaping the future of Gurukul Olympiad School</p>
-          
-          <div className="leaders-carousel">
-            <div className="leaders-vertical">
-              {leaders.map((leader, index) => (
-                <div 
-                  key={index}
-                  className={`leader-vertical-card ${index === currentSlide ? 'active' : ''}`}
-                  style={{
-                    transform: `translateY(${(index - currentSlide) * 100}%)`,
-                    transition: 'transform 0.5s ease-in-out',
-                    position: 'absolute',
-                    width: '100%',
-                    top: 0,
-                    left: 0,
-                    opacity: index === currentSlide ? 1 : 0,
-                    visibility: index === currentSlide ? 'visible' : 'hidden',
-                    transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out, visibility 0.5s'
-                  }}
-                >
-                  <div className="leader-vertical-image">
-                    <img src={leader.image} alt={leader.name} />
+            
+            <div className="modern-about-visual">
+              <div className="image-stack">
+                <div className="main-image-container">
+                  <img src="/logos/about.png" alt="Students at Gurukul Olympiad School" className="main-image" />
+                  <div className="floating-badge">
+                    <span className="badge-icon">🏆</span>
+                    <div className="badge-text">
+                      <span className="badge-number">15+</span>
+                      <span className="badge-label">Years of Excellence</span>
+                    </div>
                   </div>
-                  <div className="leader-vertical-content">
-                    <h3>{leader.name}</h3>
-                    <p className="position">{leader.position}</p>
-                    <p className="expertise">{leader.expertise}</p>
-                    <div className="message">
+                </div>
+                
+                <div className="stats-grid">
+                  <div className="stat-card">
+                    <span className="stat-number">2000+</span>
+                    <span className="stat-label">Students</span>
+                  </div>
+                  <div className="stat-card">
+                    <span className="stat-number">50+</span>
+                    <span className="stat-label">Expert Faculty</span>
+                  </div>
+                  <div className="stat-card">
+                    <span className="stat-number">10:1</span>
+                    <span className="stat-label">Student-Teacher Ratio</span>
+                  </div>
+                  <div className="stat-card">
+                    <span className="stat-number">100%</span>
+                    <span className="stat-label">Parent Satisfaction</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why GOS is Lit - Enhanced Section */}
+      <section className="modern-features" id="why-us">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Why GOS is <span className="highlight-text">Lit</span> 🔥</h2>
+            <p className="section-subtitle">Discover what makes Gurukul Olympiad School the perfect launchpad for your child's future success</p>
+          </div>
+          
+          <div className="modern-features-grid">
+            <div className="modern-feature-card" data-aos="fade-up">
+              <div className="feature-icon-wrapper">
+                <span className="feature-icon">🎯</span>
+                <div className="icon-bg"></div>
+              </div>
+              <h3>Our Vibe</h3>
+              <p>Nurturing each child's unique potential through an integrated approach that blends academics with competitive edge and future readiness.</p>
+              <div className="feature-hover-content">
+                <ul>
+                  <li>Personalized learning paths</li>
+                  <li>Future-ready curriculum</li>
+                  <li>Holistic development focus</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="modern-feature-card" data-aos="fade-up" data-aos-delay="100">
+              <div className="feature-icon-wrapper">
+                <span className="feature-icon">📚</span>
+                <div className="icon-bg"></div>
+              </div>
+              <h3>Smart Learning</h3>
+              <p>Pioneering the SWitCh model that seamlessly integrates schooling with competitive exam preparation.</p>
+              <div className="feature-hover-content">
+                <ul>
+                  <li>NCERT + CBSE + Competitive prep</li>
+                  <li>Early exposure to national exams</li>
+                  <li>Progressive assessment system</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="modern-feature-card" data-aos="fade-up" data-aos-delay="200">
+              <div className="feature-icon-wrapper">
+                <span className="feature-icon">👩‍🏫</span>
+                <div className="icon-bg"></div>
+              </div>
+              <h3>Expert Mentors</h3>
+              <p>Seasoned educators from India's top coaching institutes, bringing excellence to every classroom.</p>
+              <div className="feature-hover-content">
+                <ul>
+                  <li>Kota's finest educators</li>
+                  <li>1:1 mentorship</li>
+                  <li>Innovative teaching methods</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="modern-feature-card" data-aos="fade-up">
+              <div className="feature-icon-wrapper">
+                <span className="feature-icon">🧠</span>
+                <div className="icon-bg"></div>
+              </div>
+              <h3>Brain Power</h3>
+              <p>Comprehensive development of cognitive and emotional intelligence for well-rounded growth.</p>
+              <div className="feature-hover-content">
+                <ul>
+                  <li>EQ + IQ development</li>
+                  <li>Critical thinking focus</li>
+                  <li>Analytical skills training</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="modern-feature-card" data-aos="fade-up" data-aos-delay="100">
+              <div className="feature-icon-wrapper">
+                <span className="feature-icon">⚡</span>
+                <div className="icon-bg"></div>
+              </div>
+              <h3>Beyond Classroom</h3>
+              <p>Signature programs and activities that go beyond textbooks to shape confident individuals.</p>
+              <div className="feature-hover-content">
+                <ul>
+                  <li>EduSports program</li>
+                  <li>30+ clubs & societies</li>
+                  <li>Leadership opportunities</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="modern-feature-card cta-card" data-aos="fade-up" data-aos-delay="200">
+              <div className="cta-card-content">
+                <h3>Ready to Join the GOS Family?</h3>
+                <p>Schedule a campus tour and see the GOS difference for yourself.</p>
+                <div className="cta-buttons">
+                  <a href="#contact" className="modern-button primary">Book a Tour</a>
+                  <a href="tel:+919876543210" className="modern-button outline">Call Us Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leaders' Messages Section - Compact */}
+      <section className="leaders-section" id="leaders">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Straight from the <span className="highlight">Leadership</span></h2>
+            <p className="section-subtitle">Hear from the visionaries shaping our school's future</p>
+          </div>
+          
+          <div className="leaders-container">
+            <div className="leaders-track" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+              {leaders.map((leader, index) => (
+                <div key={index} className="leader-card">
+                  <div className="leader-image">
+                    <img 
+                      src={leader.image} 
+                      alt={leader.name}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://via.placeholder.com/200x300?text=Leader+Image';
+                      }}
+                    />
+                  </div>
+                  <div className="leader-details">
+                    <div className="leader-info">
+                      <h3>{leader.name}</h3>
+                      <p className="position">{leader.position}</p>
+                      <p className="expertise">{leader.expertise}</p>
+                    </div>
+                    <div className="leader-message">
                       <p>"{leader.message}"</p>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="leader-navigation">
-              <button className="nav-arrow prev" onClick={prevSlide} aria-label="Previous leader">
-                <span>&#10094;</span>
-              </button>
-              <div className="leader-dots">
-                {leaders.map((_, index) => (
-                  <button 
-                    key={index}
-                    className={`dot ${index === currentSlide ? 'active' : ''}`}
-                    onClick={() => goToSlide(index)}
-                    aria-label={`View ${leaders[index].name}`}
-                  ></button>
-                ))}
-              </div>
-              <button className="nav-arrow next" onClick={nextSlide} aria-label="Next leader">
-                <span>&#10095;</span>
-              </button>
+          </div>
+          
+          <div className="leaders-nav">
+            <button 
+              className="nav-arrow prev" 
+              onClick={prevSlide}
+              disabled={currentSlide === 0}
+              aria-label="Previous leader"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            
+            <div className="nav-dots">
+              {leaders.map((_, index) => (
+                <button
+                  key={index}
+                  className={`dot ${index === currentSlide ? 'active' : ''}`}
+                  onClick={() => goToSlide(index)}
+                  aria-label={`View ${leaders[index].name}`}
+                  aria-current={index === currentSlide}
+                />
+              ))}
             </div>
+            
+            <button 
+              className="nav-arrow next"
+              onClick={nextSlide}
+              disabled={currentSlide === leaders.length - 1}
+              aria-label="Next leader"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
           </div>
         </div>
       </section>
@@ -393,6 +512,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+<Route path="/life-at-gos" element={<LifeAtGos />} />
         </Routes>
       </main>
     </div>

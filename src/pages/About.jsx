@@ -21,7 +21,6 @@ const About = () => {
               </div>
             </div>
             <div className="modern-story-content">
-              <div className="section-tag">Our Journey</div>
               <h2 className="modern-heading">Redefining <span className="highlight">Education</span> for the Modern World</h2>
               
               <div className="story-highlight">
@@ -68,7 +67,6 @@ const About = () => {
       <section className="modern-mission-vision">
         <div className="container">
           <div className="section-header">
-            <div className="section-tag">Our Purpose</div>
             <h2 className="modern-heading">Guiding Principles for <span className="highlight">Excellence</span></h2>
             <p>Our mission and vision form the foundation of everything we do at Gurukul Olympiad School</p>
           </div>
@@ -138,7 +136,6 @@ const About = () => {
       <section className="modern-campus-showcase">
         <div className="container">
           <div className="section-header">
-            <div className="section-tag">Our Campuses</div>
             <h2 className="modern-heading">Explore Our <span className="highlight">Learning Environments</span></h2>
             <p>State-of-the-art facilities designed to inspire and nurture young minds across Chhatrapati Sambhajinagar</p>
           </div>
@@ -393,7 +390,7 @@ const About = () => {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About Us</Link></li>
                 <li><Link to="/#admissions">Admissions</Link></li>
-                <li><Link to="/#academics">Academics</Link></li>
+                <li><Link to="/#life-at-gos">Life at GOS</Link></li>
                 <li><Link to="/#gallery">Gallery</Link></li>
                 <li><Link to="/#contact">Contact</Link></li>
               </ul>
