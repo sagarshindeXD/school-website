@@ -1,0 +1,171 @@
+/* Campuses Page Styles */
+.campuses-hero {
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  color: white;
+  padding: 6rem 0 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.campuses-hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.campuses-hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.campuses-container {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.campus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.campus-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.campus-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.campus-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.campus-card:hover .campus-image {
+  transform: scale(1.05);
+}
+
+.campus-info {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.campus-info h2 {
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.campus-location {
+  display: flex;
+  align-items: center;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+}
+
+.campus-location svg {
+  margin-right: 0.5rem;
+  color: #e74c3c;
+}
+
+.campus-features {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.feature-tag {
+  background: #f0f7ff;
+  color: #3498db;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.campus-description {
+  color: #555;
+  margin: 1rem 0;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #3498db;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  border: 2px solid transparent;
+}
+
+.cta-button:hover {
+  background: transparent;
+  color: #3498db;
+  border-color: #3498db;
+}
+
+/* Animation for cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.campus-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.campus-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.campus-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .campus-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+  
+  .campuses-hero h1 {
+    font-size: 2.5rem;
+  }
+}

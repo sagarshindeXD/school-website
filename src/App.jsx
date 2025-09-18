@@ -2,8 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import './App.css';
 import './styles/About.css';
+import './styles/CampusLayout.css';
 import About from './pages/About';
 import LifeAtGos from './pages/LifeAtGos';
+import Campuses from './pages/Campuses';
+import CampusLayout from './pages/campus/CampusLayout';
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,7 +26,7 @@ const NavBar = () => {
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
     { path: "/life-at-gos", label: "Life at GOS" },
-    { path: "#admissions", label: "Admissions" },
+    { path: "/campuses", label: "Campuses" },
     { path: "#gallery", label: "Gallery" },
   ];
 
@@ -512,7 +515,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-<Route path="/life-at-gos" element={<LifeAtGos />} />
+          <Route path="/life-at-gos" element={<LifeAtGos />} />
+          <Route path="/campuses" element={<Campuses />} />
+          <Route path="/campus/:campusId" element={<CampusLayout />} />
         </Routes>
       </main>
     </div>
