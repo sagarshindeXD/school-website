@@ -1,17 +1,37 @@
 import { useState, useEffect, useRef } from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import './App.css';
 import './styles/About.css';
 import './styles/CampusLayout.css';
+import './styles/GosSocial.css';
 import About from './pages/About';
 import LifeAtGos from './pages/LifeAtGos';
 import Campuses from './pages/Campuses';
 import CampusLayout from './pages/campus/CampusLayout';
+import Admissions from './pages/Admissions';
+import GosSocial from './pages/GosSocial';
+import { FaChevronDown, FaChevronUp, FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaTrophy, FaFileAlt } from 'react-icons/fa';
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
   const location = useLocation();
+  const moreMenuRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (moreMenuRef.current && !moreMenuRef.current.contains(event.target)) {
+        setIsMoreOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +47,13 @@ const NavBar = () => {
     { path: "/about", label: "About" },
     { path: "/life-at-gos", label: "Life at GOS" },
     { path: "/campuses", label: "Campuses" },
-    { path: "#gallery", label: "Gallery" },
+    { path: "/admissions", label: "Admissions" },
+  ];
+
+  const moreLinks = [
+    { path: "/gos-social", label: "GOS Social", icon: <FaFacebook className="mr-2" /> },
+    { path: "/accolades", label: "Accolades", icon: <FaTrophy className="mr-2" /> },
+    { path: "/mandatory-disclosure", label: "Mandatory Public Disclosure", icon: <FaFileAlt className="mr-2" /> },
   ];
 
   return (
@@ -60,6 +86,38 @@ const NavBar = () => {
                 <span className="nav-underline"></span>
               </Link>
             ))}
+            
+            {/* More Dropdown */}
+            <div className="nav-dropdown" ref={moreMenuRef}>
+              <div 
+                className={`nav-link dropdown-toggle ${moreLinks.some(link => location.pathname === link.path) ? 'active' : ''}`}
+                onClick={() => setIsMoreOpen(!isMoreOpen)}
+                onMouseEnter={() => setIsMoreOpen(true)}
+                style={{ cursor: 'pointer' }}
+              >
+                More
+                <span className="dropdown-icon">
+                  {isMoreOpen ? <FaChevronUp size={12} /> : <FaChevronDown size={12} />}
+                </span>
+                <span className="nav-underline"></span>
+              </div>
+              <div className={`dropdown-menu ${isMoreOpen ? 'show' : ''}`}>
+                  {moreLinks.map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      className={`dropdown-item ${location.pathname === link.path ? 'active' : ''}`}
+                      onClick={() => {
+                        setIsMoreOpen(false);
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      {link.icon}
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+            </div>
           </div>
           
           <div className="nav-actions">
@@ -517,7 +575,11 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/life-at-gos" element={<LifeAtGos />} />
           <Route path="/campuses" element={<Campuses />} />
-          <Route path="/campus/:campusId" element={<CampusLayout />} />
+          <Route path="/campuses/:campusId" element={<CampusLayout />} />
+          <Route path="/admissions" element={<Admissions />} />
+          <Route path="/gos-social" element={<GosSocial />} />
+          {/* Add a catch-all route for 404 */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
     </div>

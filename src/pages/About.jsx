@@ -1,11 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/About.css';
 
 const About = () => {
+  const [activeCampus, setActiveCampus] = useState('airport');
+  const [selectedImage, setSelectedImage] = useState(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleTabClick = (campus) => {
+    setActiveCampus(campus);
+  };
+
+  const openImageModal = (imageSrc) => {
+    setSelectedImage(imageSrc);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+  };
+
+  const closeImageModal = () => {
+    setSelectedImage(null);
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+  };
 
   return (
     <div className="about-page">
@@ -132,24 +149,34 @@ const About = () => {
       </section>
 
 
-      {/* Modern Campus Showcase */}
-      <section className="modern-campus-showcase">
+
+      {/* Campus Showcase Section */}
+      <section className="campus-showcase">
         <div className="container">
           <div className="section-header">
-            <h2 className="modern-heading">Explore Our <span className="highlight">Learning Environments</span></h2>
-            <p>State-of-the-art facilities designed to inspire and nurture young minds across Chhatrapati Sambhajinagar</p>
+            <h2 className="modern-heading">Our <span className="highlight">Campuses</span></h2>
+            <p>Explore our state-of-the-art learning environments across Chhatrapati Sambhajinagar</p>
           </div>
 
           <div className="campus-tabs">
-            <div className="campus-tab active" data-campus="airport">
+            <div 
+              className={`campus-tab ${activeCampus === 'airport' ? 'active' : ''}`} 
+              onClick={() => handleTabClick('airport')}
+            >
               <div className="tab-icon">✈️</div>
               <span>Airport Campus</span>
             </div>
-            <div className="campus-tab" data-campus="osmanpura">
+            <div 
+              className={`campus-tab ${activeCampus === 'osmanpura' ? 'active' : ''}`}
+              onClick={() => handleTabClick('osmanpura')}
+            >
               <div className="tab-icon">🏛️</div>
               <span>Osmanpura Campus</span>
             </div>
-            <div className="campus-tab" data-campus="city">
+            <div 
+              className={`campus-tab ${activeCampus === 'city' ? 'active' : ''}`}
+              onClick={() => handleTabClick('city')}
+            >
               <div className="tab-icon">🏙️</div>
               <span>City Campus</span>
             </div>
@@ -157,10 +184,10 @@ const About = () => {
 
           <div className="campus-content">
             {/* Airport Campus */}
-            <div className="campus-pane active" id="airport-campus">
+            <div className={`campus-pane ${activeCampus === 'airport' ? 'active' : ''}`} id="airport-campus">
               <div className="campus-hero">
                 <div className="campus-main-image">
-                  <img src="/logos/hero.png" alt="Airport Campus Aerial View" />
+                  <img src="/logos/hero.png" alt="Airport Campus" />
                   <div className="campus-badge">
                     <span className="badge-icon">🏆</span>
                     <span>Flagship Campus</span>
@@ -180,58 +207,15 @@ const About = () => {
                     </span>
                   </div>
                   <p>Our flagship campus combines modern architecture with sustainable design, offering students an inspiring environment for holistic development. The spacious campus features cutting-edge facilities and lush green spaces that stimulate learning and creativity.</p>
-                  
-                  <div className="campus-features-grid">
-                    <div className="feature-card">
-                      <div className="feature-icon">🏫</div>
-                      <h4>Modern Classrooms</h4>
-                      <p>Smart classrooms with interactive whiteboards and ergonomic furniture</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">🔬</div>
-                      <h4>Advanced Labs</h4>
-                      <p>State-of-the-art science and computer laboratories</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">⚽</div>
-                      <h4>Sports Complex</h4>
-                      <p>Indoor and outdoor sports facilities including basketball, football, and more</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">🎨</div>
-                      <h4>Creative Spaces</h4>
-                      <p>Dedicated areas for arts, music, and performing arts</p>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              
-              <div className="campus-gallery">
-                <h4>Gallery</h4>
-                <div className="gallery-grid">
-                  {[1, 2, 3, 4, 5, 6].map((item) => (
-                    <div key={item} className="gallery-item" style={{ backgroundImage: 'url(/logos/hero.png)' }}>
-                      <div className="gallery-overlay">
-                        <span className="zoom-icon">🔍</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="campus-cta">
-                <h4>Schedule a Campus Tour</h4>
-                <p>Experience our world-class facilities and learning environment firsthand</p>
-                <button className="modern-button">Book a Tour</button>
               </div>
             </div>
-            
-            {/* Osmanpura Campus (Hidden by default) */}
-            <div className="campus-pane" id="osmanpura-campus">
-              {/* Similar structure as Airport Campus */}
+
+            {/* Osmanpura Campus */}
+            <div className={`campus-pane ${activeCampus === 'osmanpura' ? 'active' : ''}`} id="osmanpura-campus">
               <div className="campus-hero">
                 <div className="campus-main-image">
-                  <img src="/logos/hero.png" alt="Osmanpura Campus View" />
+                  <img src="/logos/hero.png" alt="Osmanpura Campus" />
                   <div className="campus-badge">
                     <span className="badge-icon">🌳</span>
                     <span>Green Campus</span>
@@ -251,58 +235,15 @@ const About = () => {
                     </span>
                   </div>
                   <p>Nestled in a peaceful neighborhood, our Osmanpura Campus offers a serene learning environment with modern facilities and dedicated faculty, perfect for focused academic growth and personal development.</p>
-                  
-                  <div className="campus-features-grid">
-                    <div className="feature-card">
-                      <div className="feature-icon">📚</div>
-                      <h4>Extensive Library</h4>
-                      <p>Well-stocked library with a wide range of books and digital resources</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">🔬</div>
-                      <h4>Science Labs</h4>
-                      <p>Fully equipped laboratories for Physics, Chemistry, and Biology</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">🎭</div>
-                      <h4>Cultural Center</h4>
-                      <p>Spaces for performing arts and cultural activities</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">🏓</div>
-                      <h4>Sports Facilities</h4>
-                      <p>Indoor games and outdoor sports facilities</p>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              
-              <div className="campus-gallery">
-                <h4>Gallery</h4>
-                <div className="gallery-grid">
-                  {[1, 2, 3, 4, 5, 6].map((item) => (
-                    <div key={item} className="gallery-item" style={{ backgroundImage: 'url(/logos/hero.png)' }}>
-                      <div className="gallery-overlay">
-                        <span className="zoom-icon">🔍</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="campus-cta">
-                <h4>Schedule a Campus Tour</h4>
-                <p>Experience our nurturing learning environment firsthand</p>
-                <button className="modern-button">Book a Tour</button>
               </div>
             </div>
-            
-            {/* City Campus (Hidden by default) */}
-            <div className="campus-pane" id="city-campus">
-              {/* Similar structure as Airport Campus */}
+
+            {/* City Campus */}
+            <div className={`campus-pane ${activeCampus === 'city' ? 'active' : ''}`} id="city-campus">
               <div className="campus-hero">
                 <div className="campus-main-image">
-                  <img src="/logos/hero.png" alt="City Campus View" />
+                  <img src="/logos/hero.png" alt="City Campus" />
                   <div className="campus-badge">
                     <span className="badge-icon">🏙️</span>
                     <span>City Center</span>
@@ -322,54 +263,49 @@ const About = () => {
                     </span>
                   </div>
                   <p>Located in the heart of the city, our City Campus offers convenience without compromising on quality education. The campus features modern amenities and easy accessibility for urban families.</p>
-                  
-                  <div className="campus-features-grid">
-                    <div className="feature-card">
-                      <div className="feature-icon">💻</div>
-                      <h4>Tech-Enabled</h4>
-                      <p>Smart classrooms with digital learning tools</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">🎨</div>
-                      <h4>Creative Labs</h4>
-                      <p>Spaces for art, music, and innovation</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">🎭</div>
-                      <h4>Auditorium</h4>
-                      <p>Modern auditorium for events and performances</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">🚌</div>
-                      <h4>Transport</h4>
-                      <p>Convenient transportation services</p>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              
-              <div className="campus-gallery">
-                <h4>Gallery</h4>
-                <div className="gallery-grid">
-                  {[1, 2, 3, 4, 5, 6].map((item) => (
-                    <div key={item} className="gallery-item" style={{ backgroundImage: 'url(/logos/hero.png)' }}>
-                      <div className="gallery-overlay">
-                        <span className="zoom-icon">🔍</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="campus-cta">
-                <h4>Schedule a Campus Tour</h4>
-                <p>Discover our urban learning environment</p>
-                <button className="modern-button">Book a Tour</button>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Compact Gallery Section */}
+      <section className="compact-gallery">
+        <div className="container">
+          <h3 className="section-title">Campus Gallery</h3>
+          <div className="gallery-grid">
+            {[1, 2, 3, 4, 5, 6].map((item) => (
+              <div 
+                key={item}
+                className="gallery-item"
+                onClick={() => openImageModal(`/logos/hero.png`)}
+                style={{ '--delay': `${(item * 0.1)}s` }}
+              >
+                <img 
+                  src={`/logos/hero.png`}
+                  alt={`Campus ${item}`}
+                  loading="lazy"
+                />
+                <div className="overlay">
+                  <span>View</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="image-modal">
+          <div className="modal-overlay" onClick={closeImageModal}></div>
+          <div className="modal-content">
+            <button className="close-modal" onClick={closeImageModal}>&times;</button>
+            <img src={selectedImage} alt="Enlarged view" />
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="footer">
