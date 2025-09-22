@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/LifeAtGos.css';
+import Footer from '../components/Footer';
 
 const AnimatedCounter = ({ value, duration = 2000 }) => {
   const counterRef = useRef(null);
@@ -341,8 +342,7 @@ const LifeAtGos = () => {
           </div>
         </div>
       </section>
-
-      <Footer/>
+      <Footer />
     </div>
   );
 };
