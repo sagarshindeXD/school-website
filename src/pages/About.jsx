@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/About.css';
+import Footer from '../components/Footer';
 
 const About = () => {
   const [activeCampus, setActiveCampus] = useState('airport');
@@ -73,7 +74,7 @@ const About = () => {
               
               <div className="story-cta">
                 <p>Join us in shaping the future of education, where tradition meets innovation.</p>
-                <Link to="/#admissions" className="modern-button">Explore Our Programs</Link>
+                <Link to="/#admissions" className="primary-button">Explore Our Programs</Link>
               </div>
             </div>
           </div>
@@ -301,67 +302,12 @@ const About = () => {
         <div className="image-modal">
           <div className="modal-overlay" onClick={closeImageModal}></div>
           <div className="modal-content">
-            <button className="close-modal" onClick={closeImageModal}>&times;</button>
+            <button className="close-button" onClick={closeImageModal}>&times;</button>
             <img src={selectedImage} alt="Enlarged view" />
           </div>
         </div>
       )}
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-section">
-              <h3>Gurukul Olympiad School, City Campus</h3>
-              <p>Besides Shahanoorwadi Railway Bridge,<br />
-              Chhatrapati Sambhajinagar<br />
-              Maharashtra 431001</p>
-              <p><strong>Email:</strong> info@gurukulolympiadschool.com<br />
-              <strong>Phone:</strong> +91 77739 37370 / 77739 37376</p>
-            </div>
-            
-            <div className="footer-section">
-              <h3>Quick Links</h3>
-              <ul className="footer-links">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About Us</Link></li>
-                <li><Link to="/#admissions">Admissions</Link></li>
-                <li><Link to="/#life-at-gos">Life at GOS</Link></li>
-                <li><Link to="/#gallery">Gallery</Link></li>
-                <li><Link to="/#contact">Contact</Link></li>
-              </ul>
-              <div className="social-links">
-                <a href="#facebook" aria-label="Facebook"><i className="fab fa-facebook"></i></a>
-                <a href="#twitter" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-                <a href="#instagram" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
-                <a href="#youtube" aria-label="YouTube"><i className="fab fa-youtube"></i></a>
-              </div>
-            </div>
-            
-            <div className="footer-section">
-              <h3>Contact Us</h3>
-              <form className="contact-form">
-                <div className="form-group">
-                  <input type="text" placeholder="Your Name" required />
-                </div>
-                <div className="form-group">
-                  <input type="email" placeholder="Your Email" required />
-                </div>
-                <div className="form-group">
-                  <textarea placeholder="Your Message" rows="3" required></textarea>
-                </div>
-                <button type="submit" className="btn btn-primary">Send Message</button>
-              </form>
-            </div>
-          </div>
-          
-          <div className="footer-bottom">
-            <p>© 2025 by Gurukul Olympiad School. 
-              <span>Powered and secured by StartupSurge | <a href="#privacy-policy">Privacy Policy</a></span>
-            </p>
-          </div>
-        </div>
-      </footer>
+<Footer/>
     </div>
   );
 };

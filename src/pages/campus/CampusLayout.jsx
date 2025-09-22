@@ -218,9 +218,9 @@ const CampusLayout = () => {
         <div className="container">
           <h2>Ready to Join Our Community?</h2>
           <p>Experience the difference of learning at {campus.name}.</p>
-          <div className="cta-buttons">
-            <Link to="/admissions" className="btn btn-primary">Apply Now</Link>
-            <Link to="/contact" className="btn btn-outline">Schedule a Visit</Link>
+          <div className="button-group">
+            <Link to="/admissions" className="primary-button">Apply Now</Link>
+            <Link to="/contact" className="secondary-button">Schedule a Visit</Link>
           </div>
         </div>
       </section>

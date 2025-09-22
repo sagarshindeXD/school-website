@@ -65,7 +65,7 @@ const Campuses = () => {
                     <span key={index} className="feature-tag">{feature}</span>
                   ))}
                 </div>
-                <Link to={campus.path} className="cta-button">
+                <Link to={campus.path} className="primary-button">
                   Explore More
                 </Link>
               </div>

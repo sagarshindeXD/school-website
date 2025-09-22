@@ -168,9 +168,9 @@ const Admissions = () => {
           <div className="enroll-content">
             <h2>Ready to Begin Your Child's Journey?</h2>
             <p>Secure your child's future with quality education at Gurukul Olympiad School</p>
-            <div className="cta-buttons">
-              <Link to="/contact" className="btn btn-primary">Enroll Now</Link>
-              <Link to="/campuses" className="btn btn-outline">Visit Our Campuses</Link>
+            <div className="button-group">
+              <Link to="/contact" className="primary-button">Enroll Now</Link>
+              <Link to="/campuses" className="secondary-button">Visit Our Campuses</Link>
             </div>
           </div>
         </div>

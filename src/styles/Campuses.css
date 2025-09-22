@@ -113,25 +113,8 @@
   flex-grow: 1;
 }
 
-.cta-button {
-  display: inline-block;
-  background: #3498db;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  margin-top: 1rem;
-  transition: all 0.3s ease;
-  align-self: flex-start;
-  border: 2px solid transparent;
-}
-
-.cta-button:hover {
-  background: transparent;
-  color: #3498db;
-  border-color: #3498db;
-}
+/* Button styles are now in App.css for consistency */
+/* Use .primary-button for solid buttons and .secondary-button for outlined buttons */
 
 /* Animation for cards */
 @keyframes fadeInUp {

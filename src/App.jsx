@@ -11,6 +11,7 @@ import CampusLayout from './pages/campus/CampusLayout';
 import Admissions from './pages/Admissions';
 import GosSocial from './pages/GosSocial';
 import { FaChevronDown, FaChevronUp, FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaTrophy, FaFileAlt } from 'react-icons/fa';
+import Accolades from './pages/Accolades';
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -123,7 +124,7 @@ const NavBar = () => {
           <div className="nav-actions">
             <Link 
               to="/login" 
-              className="btn btn-primary"
+              className="primary-button button-sm"
               onClick={() => setIsMenuOpen(false)}
             >
               Login
@@ -272,9 +273,9 @@ const Home = () => {
                   </div>
                 </div>
                 
-                <div className="cta-buttons">
-                  <Link to="/about" className="modern-button primary">Our Story</Link>
-                  <Link to="/#virtual-tour" className="modern-button outline">Virtual Tour</Link>
+                <div className="button-group">
+                  <Link to="/about" className="primary-button">Our Story</Link>
+                  <Link to="/#virtual-tour" className="secondary-button">Virtual Tour</Link>
                 </div>
               </div>
             </div>
@@ -321,7 +322,6 @@ const Home = () => {
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Why GOS is <span className="highlight-text">Lit</span> 🔥</h2>
-            <p className="section-subtitle">Discover what makes Gurukul Olympiad School the perfect launchpad for your child's future success</p>
           </div>
           
           <div className="modern-features-grid">
@@ -409,9 +409,9 @@ const Home = () => {
               <div className="cta-card-content">
                 <h3>Ready to Join the GOS Family?</h3>
                 <p>Schedule a campus tour and see the GOS difference for yourself.</p>
-                <div className="cta-buttons">
-                  <a href="#contact" className="modern-button primary">Book a Tour</a>
-                  <a href="tel:+919876543210" className="modern-button outline">Call Us Now</a>
+                <div className="button-group">
+                  <a href="#contact" className="primary-button">Book a Tour</a>
+                  <a href="tel:+919876543210" className="secondary-button">Call Us Now</a>
                 </div>
               </div>
             </div>
@@ -424,7 +424,6 @@ const Home = () => {
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Straight from the <span className="highlight">Leadership</span></h2>
-            <p className="section-subtitle">Hear from the visionaries shaping our school's future</p>
           </div>
           
           <div className="leaders-container">
@@ -497,8 +496,8 @@ const Home = () => {
       {/* CTA Section */}
       <section className="cta-section">
         <div className="cta-content">
-          <h2>Ready to Join the GOS Fam?</h2>
-          <p>Join our community of learners and innovators today</p>
+          <h2 id='cta-title'>Ready to Join the GOS Fam?</h2>
+          <p id='cta-subtitle'>Join our community of learners and innovators today</p>
           <button className="primary-button">Apply Now</button>
         </div>
       </section>
@@ -578,7 +577,7 @@ function App() {
           <Route path="/campuses/:campusId" element={<CampusLayout />} />
           <Route path="/admissions" element={<Admissions />} />
           <Route path="/gos-social" element={<GosSocial />} />
-          {/* Add a catch-all route for 404 */}
+          <Route path="/accolades" element={<Accolades />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

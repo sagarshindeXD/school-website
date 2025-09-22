@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaHeart, FaComment, FaShare, FaPlay } from 'react-icons/fa';
+import Footer from '../components/Footer';
 import '../styles/GosSocial.css';
 
 const GosSocial = () => {
@@ -92,63 +93,9 @@ const GosSocial = () => {
               </div>
             ))}
           </div>
-
-          <aside className="social-sidebar">
-            <div className="sidebar-widget connect-widget">
-              <h3>Connect With Us</h3>
-              <p className="connect-description">Stay updated with our latest news, events, and achievements by following us on social media or reaching out directly.</p>
-              
-              <div className="social-links">
-                <a href="https://facebook.com/gurukulolympiadschool" target="_blank" rel="noopener noreferrer" className="social-link facebook">
-                  <span className="social-icon"><FaFacebook /></span>
-                  <span className="social-text">/gurukulolympiadschool</span>
-                  <span className="social-follow">Follow</span>
-                </a>
-                <a href="https://twitter.com/gurukuloschool" target="_blank" rel="noopener noreferrer" className="social-link twitter">
-                  <span className="social-icon"><FaTwitter /></span>
-                  <span className="social-text">@gurukuloschool</span>
-                  <span className="social-follow">Follow</span>
-                </a>
-                <a href="https://instagram.com/gurukulolympiadschool" target="_blank" rel="noopener noreferrer" className="social-link instagram">
-                  <span className="social-icon"><FaInstagram /></span>
-                  <span className="social-text">@gurukulolympiadschool</span>
-                  <span className="social-follow">Follow</span>
-                </a>
-                <a href="https://youtube.com/gurukulolympiadschool" target="_blank" rel="noopener noreferrer" className="social-link youtube">
-                  <span className="social-icon"><FaYoutube /></span>
-                  <span className="social-text">Gurukul Olympiad School</span>
-                  <span className="social-follow">Subscribe</span>
-                </a>
-              </div>
-              
-              <div className="contact-info">
-                <h4>Contact Information</h4>
-                <div className="contact-item">
-                  <span className="contact-icon">📧</span>
-                  <span>info@gurukulolympiad.edu</span>
-                </div>
-                <div className="contact-item">
-                  <span className="contact-icon">📞</span>
-                  <span>+91 98765 43210</span>
-                </div>
-                <div className="contact-item">
-                  <span className="contact-icon">📍</span>
-                  <span>123 Knowledge Street, Education Hub, City - 123456</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="sidebar-widget">
-              <h3>Latest Events</h3>
-              <ul className="event-list">
-                <li>Annual Science Fair - Oct 15, 2024</li>
-                <li>Sports Day - Nov 5, 2024</li>
-                <li>Cultural Fest - Dec 20, 2024</li>
-              </ul>
-            </div>
-          </aside>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
