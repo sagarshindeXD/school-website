@@ -4,6 +4,7 @@ import './App.css';
 import './styles/About.css';
 import './styles/CampusLayout.css';
 import './styles/GosSocial.css';
+import './styles/ImageGallery.css';
 import About from './pages/About';
 import LifeAtGos from './pages/LifeAtGos';
 import Campuses from './pages/Campuses';
@@ -12,6 +13,7 @@ import Admissions from './pages/Admissions';
 import GosSocial from './pages/GosSocial';
 import { FaChevronDown, FaChevronUp, FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaTrophy, FaFileAlt } from 'react-icons/fa';
 import Accolades from './pages/Accolades';
+import ImageGallery from './components/ImageGallery';
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -316,6 +318,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Image Gallery Section */}
+      <ImageGallery />
 
       {/* Why GOS is Lit - Enhanced Section */}
       <section className="modern-features" id="why-us">
